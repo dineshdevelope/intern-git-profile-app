@@ -12,7 +12,7 @@ function profileView(profileName) {
       sectionEl.setAttribute("class", "bg-blue-100");
       sectionEl.classList.add("rounded", "mx-auto");
 
-      sectionEl.innerHTML = `<div>
+      sectionEl.innerHTML = `<div class="p-5 rounded bg-cyan-50 space-y-3  text-center">
         <div><img src=${responseData.avatar_url} class="w-48 rounded-lg"></div>
 
       <div class="font-serif">${responseData.name}</div>
@@ -21,6 +21,14 @@ function profileView(profileName) {
 
       <div class="font-serif">Following : ${responseData.following}</div>
 
+      <div class="font-serif">Total No Of Repos : ${responseData.public_repos}</div>
+      
+      <button
+  class="bg-blue-500 hover:bg-blue-600 hover:text-gray-100 p-3 rounded-md text-white font-semibold "
+>
+  <a href= "https://github.com/${responseData.login}?tab=repositories" target="_blank">Gitup Link</a>
+</button>
+     
       
       </div>`;
       mainEl.append(sectionEl);
