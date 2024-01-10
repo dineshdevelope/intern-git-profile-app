@@ -1,22 +1,32 @@
-const profiles = [];
-var xhr = new XMLHttpRequest();
+const mainEl = document.getElementById("main");
 
 function profileView(profileName) {
+  var xhr = new XMLHttpRequest();
+
   xhr.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
       let responseData = JSON.parse(this.response);
       console.log(responseData);
-      let photo = responseData.avatar_url;
-      let name = responseData.name;
-      let html_url = responseData.html_url;
 
-      return responseData;
+      const sectionEl = document.createElement("section");
+      sectionEl.setAttribute("class", "bg-blue-100");
+      sectionEl.classList.add("rounded", "mx-auto");
+
+      sectionEl.innerHTML = `<div>
+        <div><img src=${responseData.avatar_url} class="w-48 rounded-lg"></div>
+
+      <div class="font-serif">${responseData.name}</div>
+
+      <div class="font-serif">Followers : ${responseData.followers}</div>
+
+      <div class="font-serif">Following : ${responseData.following}</div>
+
+      
+      </div>`;
+      mainEl.append(sectionEl);
     }
   };
-  xhr.open(
-    "GET",
-    `https://cors-anywhere.herokuapp.com/https://api.github.com/users/${profileName}`
-  );
+  xhr.open("GET", `https://api.github.com/users/${profileName}`);
   xhr.send();
 }
 
