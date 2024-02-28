@@ -26,7 +26,7 @@ function profileView(profileName) {
       <button
   class="bg-blue-500 hover:bg-blue-600 hover:text-gray-100 p-3 rounded-md text-white font-semibold "
 >
-  <a href= "https://github.com/${responseData.login}?tab=repositories" target="_blank">Gitup Link</a>
+  <a href= "https://github.com/${responseData.login}?tab=repositories" target="_blank">Githup P Link</a>
 </button>
      
       
